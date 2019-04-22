@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/TeamTurnIdentifier"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context="hfcj">
 
     <TextView
         android:id="@+id/LevelTextView"
@@ -12,7 +13,7 @@
         android:layout_height="18dp"
         android:text="1"
         tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="155dp" />
+        tools:layout_editor_absoluteY="175dp" />
 
     <SeekBar
         android:id="@+id/LevelSeekBar"
@@ -56,15 +57,16 @@
         app:layout_constraintBottom_toTopOf="@+id/GoBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent" /> //
-        android:layout_height="26dp"
-        android:layout_marginStart="53dp"
-        android:layout_marginTop="92dp"
-        android:layout_marginEnd="70dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.733"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LevelSeekBar" />
+        app:layout_constraintStart_toStartOf="parent" />
+    //
+    android:layout_height="26dp"
+    android:layout_marginStart="53dp"
+    android:layout_marginTop="92dp"
+    android:layout_marginEnd="70dp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.733"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/LevelSeekBar" />
 
     <TextView
         android:id="@+id/CategoryLabel"
@@ -78,6 +80,18 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         tools:text="Category" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="225dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="93dp"
+        android:layout_marginEnd="93dp"
+        android:layout_marginBottom="94dp"
+        android:text="First Team"
+        app:layout_constraintBottom_toTopOf="@+id/LevelLabel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </android.support.constraint.ConstraintLayout>

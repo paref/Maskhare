@@ -14,7 +14,7 @@ public class WordActivity extends AppCompatActivity {
     int Round;
     int Duration;
     int Level = 1;
-
+    int Category_Id=0;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,6 +66,7 @@ public class WordActivity extends AppCompatActivity {
                 intent.putExtra("Round", Round);
                 intent.putExtra("Duration", Duration);
                 intent.putExtra("Level", Level);
+                intent.putExtra("Category_Id", Category_Id);
                 startActivity(intent);
             }
         });

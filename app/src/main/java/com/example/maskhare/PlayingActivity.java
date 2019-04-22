@@ -9,6 +9,7 @@ public class PlayingActivity extends AppCompatActivity {
     int Round;
     int Duration;
     int Level;
+    int Category_Id;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -16,6 +17,7 @@ public class PlayingActivity extends AppCompatActivity {
         Intent intent = getIntent();
         Round = intent.getIntExtra("Round",1);
         Duration = intent.getIntExtra("Duration",1);
-        Level = intent.getIntExtra("Level",1);//
+        Level = intent.getIntExtra("Level",1);
+        Category_Id = intent.getIntExtra("Category_Id", 0);
     }
 }
