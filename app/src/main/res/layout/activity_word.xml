@@ -11,7 +11,7 @@
         android:layout_width="29dp"
         android:layout_height="18dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="184dp"
+        android:layout_marginTop="164dp"
         android:layout_marginEnd="33dp"
         android:text="1"
         app:layout_constraintEnd_toStartOf="@+id/LevelSeekBar"
@@ -23,34 +23,35 @@
         android:id="@+id/LevelSeekBar"
         android:layout_width="256dp"
         android:layout_height="26dp"
+        android:layout_marginStart="30dp"
         android:layout_marginEnd="80dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/LevelTextView"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/LevelTextView"
+        app:layout_constraintTop_toBottomOf="@+id/LevelLabel" />
 
     <TextView
         android:id="@+id/LevelLabel"
         android:layout_width="48dp"
         android:layout_height="24dp"
         android:layout_marginStart="181dp"
+        android:layout_marginTop="94dp"
         android:layout_marginEnd="182dp"
         android:text="Level"
-        app:layout_constraintBottom_toTopOf="@+id/LevelSeekBar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <Button
         android:id="@+id/GoBtn"
         android:layout_width="wrap_content"
         android:layout_height="58dp"
         android:layout_marginStart="162dp"
-        android:layout_marginTop="432dp"
+        android:layout_marginTop="56dp"
         android:layout_marginEnd="161dp"
         android:text="Go!"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LevelSeekBar" />
+        app:layout_constraintTop_toBottomOf="@+id/CategorySpinner" />
 
     <Spinner
         android:id="@+id/CategorySpinner"
@@ -58,21 +59,19 @@
         android:layout_height="26dp"
         android:layout_marginStart="75dp"
         android:layout_marginEnd="78dp"
-        android:layout_marginBottom="200dp"
-        app:layout_constraintBottom_toTopOf="@+id/GoBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CategoryLabel" />
 
     <SeekBar
-        android:id="@+id/seekBar"
+        android:id="@+id/PlayersCountSeekBar"
         android:layout_width="256dp"
         android:layout_height="26dp"
-        android:layout_marginStart="53dp"
-        android:layout_marginTop="92dp"
-        android:layout_marginEnd="70dp"
+        android:layout_marginStart="87dp"
+        android:layout_marginTop="88dp"
+        android:layout_marginEnd="68dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.733"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/LevelSeekBar" />
 
@@ -81,27 +80,39 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="176dp"
+        android:layout_marginTop="73dp"
         android:layout_marginEnd="177dp"
         android:text="Category"
-        app:layout_constraintBottom_toTopOf="@+id/CategorySpinner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/PlayersCountSeekBar"
         tools:text="Category" />
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="256dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="8dp"
+        android:layout_width="74dp"
+        android:layout_height="23dp"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="167dp"
         android:text="First Team"
-        app:layout_constraintBottom_toTopOf="@+id/LevelLabel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/PlayersCountLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="176dp"
+        android:layout_marginTop="68dp"
+        android:layout_marginEnd="176dp"
+        android:text="Players Count"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.474" />
+        app:layout_constraintTop_toBottomOf="@+id/LevelSeekBar" />
 
 
 </android.support.constraint.ConstraintLayout>

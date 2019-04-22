@@ -28,6 +28,7 @@ public class DBService {
         while (!c.isAfterLast()) {
             Thing thing = new Thing(c.getInt(0),c.getString(1),c.getInt(2),c.getInt(3));
             things.add(thing);
+            c.moveToNext();
         }
     }
 
@@ -37,6 +38,7 @@ public class DBService {
         while (!c.isAfterLast()) {
             Category category = new Category(c.getInt(0),c.getString(1));
             categories.add(category);
+            c.moveToNext();
         }
     }
 

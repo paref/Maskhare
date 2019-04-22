@@ -25,6 +25,7 @@ public class PlayingActivity extends AppCompatActivity {
     List<Thing> FilteredList;
     String WordText;
     int Score;
+    int RoundCounter;
     int Count;
 
     @Override
@@ -40,6 +41,7 @@ public class PlayingActivity extends AppCompatActivity {
         Level = intent.getIntExtra("Level", 1);
         Category_Id = intent.getIntExtra("Category_Id", 0);
         Count = intent.getIntExtra("Count", 0);
+        RoundCounter = intent.getIntExtra("RoundCounter", 0);
         for (Thing thing : things) {
             if (thing.getCategory_Id() == this.Category_Id) {
                 FilteredList.add(thing);
