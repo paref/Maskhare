@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.SeekBar;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 public class WordActivity extends AppCompatActivity {
@@ -68,5 +69,6 @@ public class WordActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        Spinner CategorySpinner = findViewById(R.id.CategorySpinner);
     }
 }
