@@ -12,6 +12,7 @@ import android.widget.TextView;
 public class ConfigureActivity extends AppCompatActivity {
     int Round = 1;
     int Duration;
+    int PlayersCount = 2;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -69,7 +70,33 @@ public class ConfigureActivity extends AppCompatActivity {
                 Intent intent = new Intent(ConfigureActivity.this, WordActivity.class);
                 intent.putExtra("Round", Round);
                 intent.putExtra("Duration", Duration);
+                intent.putExtra("PlayersCount", PlayersCount);
                 startActivity(intent);
+            }
+        });
+        final TextView PlayersCountTextView = findViewById(R.id.PlayersCountTextView);
+        SeekBar PlayersCountSeekBar = findViewById(R.id.PlayersCountSeekBar);
+        PlayersCountSeekBar.setMax(5);
+        PlayersCountSeekBar.setProgress(2);
+        PlayersCountSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                if (seekBar.getProgress() < 2) {
+                    seekBar.setProgress(2);
+                    progress = 2;
+                }
+                PlayersCountTextView.setText(String.valueOf(progress));
+                PlayersCount = progress;
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
             }
         });
     }

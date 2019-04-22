@@ -76,6 +76,8 @@ public class PlayingActivity extends AppCompatActivity {
             }
         };
         countDownTimer.start();
+        TextView MainLabel = findViewById(R.id.MainLabel);
+        MainLabel.setText(WordText);
     }
 
     private void Succeed() {

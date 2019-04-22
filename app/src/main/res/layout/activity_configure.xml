@@ -6,6 +6,41 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:id="@+id/PlayersCountTextView"
+        android:layout_width="19dp"
+        android:layout_height="19dp"
+        android:layout_marginTop="122dp"
+        android:layout_marginEnd="44dp"
+        android:text="2"
+        app:layout_constraintEnd_toStartOf="@+id/PlayersCountSeekBar"
+        app:layout_constraintTop_toTopOf="@+id/RoundTextView" />
+
+    <SeekBar
+        android:id="@+id/PlayersCountSeekBar"
+        android:layout_width="256dp"
+        android:layout_height="21dp"
+        android:layout_marginStart="79dp"
+        android:layout_marginTop="288dp"
+        android:layout_marginEnd="76dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/playersCountLabel3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="176dp"
+        android:layout_marginTop="252dp"
+        android:layout_marginEnd="176dp"
+        android:text="Players Count"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.517"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <SeekBar
         android:id="@+id/RoundSeekBar"
         android:layout_width="256dp"
@@ -80,10 +115,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="160dp"
-        android:layout_marginTop="46dp"
+        android:layout_marginTop="192dp"
         android:layout_marginEnd="163dp"
         android:text="Go!"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/RoundSeekBar" />
 </android.support.constraint.ConstraintLayout>
