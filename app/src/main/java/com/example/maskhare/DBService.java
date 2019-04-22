@@ -32,7 +32,12 @@ public class DBService {
     }
 
     private void CollectCategories() {
-
+        Cursor c = dbAccess.getDb().rawQuery("SELECT * FROM Category", null);
+        c.moveToFirst();
+        while (!c.isAfterLast()) {
+            Category category = new Category(c.getInt(0),c.getString(1));
+            categories.add(category);
+        }
     }
 
     public List<Category> getCategories() {
