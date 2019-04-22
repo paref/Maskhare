@@ -1,10 +1,12 @@
 package com.example.maskhare;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Adapter;
 import android.widget.ArrayAdapter;
@@ -16,6 +18,9 @@ import android.widget.TextView;
 import com.example.maskhare.Models.Category;
 import com.example.maskhare.Models.Thing;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -89,6 +94,7 @@ public class WordActivity extends AppCompatActivity {
                 if (Count == PlayersCount) {
                     Count = 0;
                     RoundCounter++;
+                    writeToFile("\r\n",WordActivity.this);
                 }
                 intent.putExtra("Count", Count);
                 if (RoundCounter == Round) {
@@ -108,5 +114,16 @@ public class WordActivity extends AppCompatActivity {
 
     private void Finish() {
 
+    }
+
+    private void writeToFile(String data, Context context) {
+        try {
+            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(context.openFileOutput("text.txt", Context.MODE_PRIVATE));
+            outputStreamWriter.write(data);
+            outputStreamWriter.close();
+        }
+        catch (IOException e) {
+            Log.e("Exception", "File write failed: " + e.toString());
+        }
     }
 }
