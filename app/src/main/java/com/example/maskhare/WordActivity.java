@@ -96,7 +96,6 @@ public class WordActivity extends AppCompatActivity {
 
             }
         });
-        SeekBar PlayersCountSpinner = findViewById(R.id.PlayersCountSeekBar);
         Button GoBtn = findViewById(R.id.GoBtn);
         GoBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -118,6 +117,31 @@ public class WordActivity extends AppCompatActivity {
                 }
                 intent.putExtra("RoundCounter", RoundCounter);
                 startActivity(intent);
+            }
+        });
+        final TextView PlayersCountLabel = findViewById(R.id.PlayersCountLabel);
+        final SeekBar PlayersCountSeekbar = findViewById(R.id.PlayersCountSeekBar);
+        PlayersCountSeekbar.setMax(5);
+        PlayersCountSeekbar.setProgress(2);
+        PlayersCountSeekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                if (seekBar.getProgress() < 1) {
+                    seekBar.setProgress(1);
+                    progress = 1;
+                }
+                PlayersCount = progress;
+                PlayersCountLabel.setText(String.valueOf(progress));
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
             }
         });
         Spinner CategorySpinner = findViewById(R.id.CategorySpinner);
