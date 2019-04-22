@@ -11,10 +11,11 @@
         android:layout_width="29dp"
         android:layout_height="18dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="175dp"
+        android:layout_marginTop="184dp"
         android:layout_marginEnd="33dp"
         android:text="1"
         app:layout_constraintEnd_toStartOf="@+id/LevelSeekBar"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -22,25 +23,21 @@
         android:id="@+id/LevelSeekBar"
         android:layout_width="256dp"
         android:layout_height="26dp"
-        android:layout_marginStart="53dp"
-        android:layout_marginTop="172dp"
-        android:layout_marginEnd="79dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.954"
-        app:layout_constraintStart_toEndOf="@+id/LevelTextView"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginEnd="80dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/LevelTextView"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/LevelLabel"
         android:layout_width="48dp"
         android:layout_height="24dp"
         android:layout_marginStart="181dp"
-        android:layout_marginTop="94dp"
         android:layout_marginEnd="182dp"
         android:text="Level"
+        app:layout_constraintBottom_toTopOf="@+id/LevelSeekBar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/GoBtn"
@@ -56,9 +53,9 @@
         app:layout_constraintTop_toBottomOf="@+id/LevelSeekBar" />
 
     <Spinner
-        android:layout_height="26dp"
         android:id="@+id/CategorySpinner"
         android:layout_width="258dp"
+        android:layout_height="26dp"
         android:layout_marginStart="75dp"
         android:layout_marginEnd="78dp"
         android:layout_marginBottom="200dp"
@@ -68,6 +65,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <SeekBar
+        android:id="@+id/seekBar"
         android:layout_width="256dp"
         android:layout_height="26dp"
         android:layout_marginStart="53dp"
@@ -93,15 +91,17 @@
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="225dp"
+        android:layout_width="256dp"
         android:layout_height="38dp"
-        android:layout_marginStart="93dp"
-        android:layout_marginEnd="93dp"
-        android:layout_marginBottom="94dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="8dp"
         android:text="First Team"
         app:layout_constraintBottom_toTopOf="@+id/LevelLabel"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.474" />
 
 
 </android.support.constraint.ConstraintLayout>
