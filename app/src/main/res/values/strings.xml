@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Maskhare</string>
+
+    <string-array name="categories">
+        <item>One</item>
+        <item>One</item>
+        <item>One</item>
+        <item>One</item>
+    </string-array>
 </resources>
