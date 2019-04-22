@@ -49,7 +49,7 @@ public class WordActivity extends AppCompatActivity {
         Duration = intent.getIntExtra("Duration", 0);
         Count = intent.getIntExtra("Count", 0);
         int score = intent.getIntExtra("Score", 0);
-        if (io == true) {
+        if (io) {
             writeToFile("," + score, this);
         }
         RoundCounter = intent.getIntExtra("RoundCounter", 0);

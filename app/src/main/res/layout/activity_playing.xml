@@ -8,6 +8,7 @@
 
     <Button
         android:id="@+id/GiveupBtn"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="161dp"
@@ -20,6 +21,7 @@
 
     <Button
         android:id="@+id/CorrectBtn"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="161dp"
@@ -32,8 +34,8 @@
 
     <TextView
         android:id="@+id/countdown_text"
-        android:layout_width="156dp"
-        android:layout_height="94dp"
+        android:layout_width="246dp"
+        android:layout_height="181dp"
         android:layout_marginStart="127dp"
         android:layout_marginTop="76dp"
         android:layout_marginEnd="128dp"
