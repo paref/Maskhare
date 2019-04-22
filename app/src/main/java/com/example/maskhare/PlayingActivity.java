@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.maskhare.Models.Category;
 import com.example.maskhare.Models.Thing;
@@ -62,10 +63,11 @@ public class PlayingActivity extends AppCompatActivity {
                 Succeed();
             }
         });
-        CountDownTimer countDownTimer = new CountDownTimer(Duration * 1000, 1000) {
+        final CountDownTimer countDownTimer = new CountDownTimer(Duration * 1000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
-
+                TextView countdown_text = findViewById(R.id.countdown_text);
+                countdown_text.setText(String.valueOf(millisUntilFinished / 1000));
             }
 
             @Override

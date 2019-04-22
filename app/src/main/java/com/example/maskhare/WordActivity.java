@@ -2,13 +2,12 @@ package com.example.maskhare;
 
 import android.content.Context;
 import android.content.Intent;
+import android.icu.util.ULocale;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -17,14 +16,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.maskhare.Models.Category;
-import com.example.maskhare.Models.Thing;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.jar.Attributes;
 
 public class WordActivity extends AppCompatActivity {
     int Round;
@@ -45,8 +41,8 @@ public class WordActivity extends AppCompatActivity {
         DBService service = new DBService(this);
         categories = service.getCategories();
         Names = new ArrayList<>();
-        for (Category category:categories
-             ) {
+        for (Category category : categories
+        ) {
             Names.add(category.getTitle());
         }
         Intent intent = getIntent();
@@ -96,7 +92,31 @@ public class WordActivity extends AppCompatActivity {
 
             }
         });
-        SeekBar PlayersCountSpinner = findViewById(R.id.PlayersCountSeekBar);
+        final TextView PlayersCountTextView = findViewById(R.id.PlayersCountTextView);
+        SeekBar PlayersCountSeekBar = findViewById(R.id.PlayersCountSeekBar);
+        PlayersCountSeekBar.setMax(5);
+        PlayersCountSeekBar.setProgress(2);
+        PlayersCountSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                if (seekBar.getProgress() < 2) {
+                    seekBar.setProgress(2);
+                    progress = 2;
+                }
+                PlayersCountTextView.setText(progress);
+                PlayersCount = progress;
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
         Button GoBtn = findViewById(R.id.GoBtn);
         GoBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -121,15 +141,18 @@ public class WordActivity extends AppCompatActivity {
             }
         });
         Spinner CategorySpinner = findViewById(R.id.CategorySpinner);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item,Names);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, Names);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         CategorySpinner.setAdapter(adapter);
-//        CategorySpinner.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                Category_Id = position;
-//            }
-//        });
+        CategorySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+                Category_Id = pos;
+            }
+
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 
     private void Finish() {
