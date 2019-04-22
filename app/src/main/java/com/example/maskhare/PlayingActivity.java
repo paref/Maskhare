@@ -21,10 +21,10 @@ public class PlayingActivity extends AppCompatActivity {
     int Level;
     int Category_Id;
     DBService dbService;
-    List<Category> categories;
     List<Thing> things;
     List<Thing> FilteredList;
     String WordText;
+    int Score;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -32,7 +32,6 @@ public class PlayingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_playing);
         FilteredList = new ArrayList<>();
         dbService = new DBService(this);
-        categories = dbService.getCategories();
         things = dbService.getThings();
         Intent intent = getIntent();
         Round = intent.getIntExtra("Round", 1);
@@ -74,12 +73,18 @@ public class PlayingActivity extends AppCompatActivity {
     }
 
     private void Succeed() {
-        int Score = 20 * Level;
-        //Todo: comeback to word activity and pass the score by level
+        Score = 20 * Level;
+        GoBack();
+    }
+
+    private void GoBack() {
+        Intent intent = new Intent(PlayingActivity.this, WordActivity.class);
+        intent.putExtra("Score", Score);
+        startActivity(intent);
     }
 
     private void Fail() {
-        //Todo: comeback to word activity and pass the score 0
+        Score = 0;
     }
 
     private String ChooseWord() {

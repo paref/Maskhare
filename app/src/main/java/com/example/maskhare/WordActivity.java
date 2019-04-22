@@ -5,20 +5,31 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Adapter;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.example.maskhare.Models.Category;
+import com.example.maskhare.Models.Thing;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class WordActivity extends AppCompatActivity {
     int Round;
     int Duration;
     int Level = 1;
-    int Category_Id=0;
+    int Category_Id = 0;
+    List<Category> categories;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_word);
+        categories = new ArrayList<>();
         Intent intent = getIntent();
         Round = intent.getIntExtra("Round", 0);
         Duration = intent.getIntExtra("Duration", 0);
@@ -33,14 +44,16 @@ public class WordActivity extends AppCompatActivity {
                     seekBar.setProgress(1);
                     progress = 1;
                 }
-                switch (progress){
-                    case 1:{
+                switch (progress) {
+                    case 1: {
                         LevelTextView.setText("Easy");
                         break;
-                    } case 2:{
+                    }
+                    case 2: {
                         LevelTextView.setText("Medium");
                         break;
-                    } case 3:{
+                    }
+                    case 3: {
                         LevelTextView.setText("Hard");
                         break;
                     }
@@ -71,5 +84,10 @@ public class WordActivity extends AppCompatActivity {
             }
         });
         Spinner CategorySpinner = findViewById(R.id.CategorySpinner);
+        ArrayAdapter<Category> adapter = new ArrayAdapter<Category>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, categories);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        CategorySpinner.setAdapter(adapter);
+            Category selectedItem = (Category) CategorySpinner.getSelectedItem();
+        Category_Id = selectedItem.getId();
     }
 }
