@@ -25,6 +25,7 @@ public class PlayingActivity extends AppCompatActivity {
     List<Thing> FilteredList;
     String WordText;
     int Score;
+    int Count;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -38,6 +39,7 @@ public class PlayingActivity extends AppCompatActivity {
         Duration = intent.getIntExtra("Duration", 1);
         Level = intent.getIntExtra("Level", 1);
         Category_Id = intent.getIntExtra("Category_Id", 0);
+        Count = intent.getIntExtra("Count", 0);
         for (Thing thing : things) {
             if (thing.getCategory_Id() == this.Category_Id) {
                 FilteredList.add(thing);
@@ -80,6 +82,8 @@ public class PlayingActivity extends AppCompatActivity {
     private void GoBack() {
         Intent intent = new Intent(PlayingActivity.this, WordActivity.class);
         intent.putExtra("Score", Score);
+        Count++;
+        intent.putExtra("Count", Count);
         startActivity(intent);
     }
 

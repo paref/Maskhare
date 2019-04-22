@@ -2,6 +2,7 @@ package com.example.maskhare;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -24,6 +25,9 @@ public class WordActivity extends AppCompatActivity {
     int Level = 1;
     int Category_Id = 0;
     List<Category> categories;
+    int Count;
+    int PlayersCount;
+    int RoundCounter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -33,6 +37,8 @@ public class WordActivity extends AppCompatActivity {
         Intent intent = getIntent();
         Round = intent.getIntExtra("Round", 0);
         Duration = intent.getIntExtra("Duration", 0);
+        Count = intent.getIntExtra("Count", 0);
+        RoundCounter = intent.getIntExtra("RoundCounter", 0);
         final TextView LevelTextView = findViewById(R.id.LevelTextView);
         final SeekBar LevelSeekBar = findViewById(R.id.LevelSeekBar);
         LevelSeekBar.setMax(3);
@@ -80,6 +86,15 @@ public class WordActivity extends AppCompatActivity {
                 intent.putExtra("Duration", Duration);
                 intent.putExtra("Level", Level);
                 intent.putExtra("Category_Id", Category_Id);
+                if (Count == PlayersCount) {
+                    Count = 0;
+                    RoundCounter++;
+                }
+                intent.putExtra("Count", Count);
+                if (RoundCounter == Round) {
+                    Finish();
+                }
+                intent.putExtra("RoundCounter", RoundCounter);
                 startActivity(intent);
             }
         });
@@ -87,7 +102,11 @@ public class WordActivity extends AppCompatActivity {
         ArrayAdapter<Category> adapter = new ArrayAdapter<Category>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, categories);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         CategorySpinner.setAdapter(adapter);
-            Category selectedItem = (Category) CategorySpinner.getSelectedItem();
+        Category selectedItem = (Category) CategorySpinner.getSelectedItem();
         Category_Id = selectedItem.getId();
+    }
+
+    private void Finish() {
+
     }
 }
