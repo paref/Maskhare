@@ -115,5 +115,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/LevelSeekBar" />
 
+    <TextView
+        android:id="@+id/RoundCounter"
+        android:layout_width="74dp"
+        android:layout_height="23dp"
+        android:text="Round One"
+        tools:layout_editor_absoluteX="171dp"
+        tools:layout_editor_absoluteY="61dp" />
+
 
 </android.support.constraint.ConstraintLayout>

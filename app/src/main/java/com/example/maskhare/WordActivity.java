@@ -96,6 +96,7 @@ public class WordActivity extends AppCompatActivity {
 
             }
         });
+        SeekBar PlayersCountSpinner = findViewById(R.id.PlayersCountSeekBar);
         Button GoBtn = findViewById(R.id.GoBtn);
         GoBtn.setOnClickListener(new View.OnClickListener() {
             @Override
