@@ -2,51 +2,51 @@ package com.example.maskhare;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 
 public class ResultActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
-        String str = readFromFile(this);
+        String str = readFromFile();
         String[] strings = str.split("\r\n");
     }
 
-    private String readFromFile(Context context) {
-
-        String ret = "";
-
+    private void ClearFile() {
         try {
-            InputStream inputStream = context.openFileInput("text.txt");
-
-            if (inputStream != null) {
-                InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
-                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-                String receiveString = "";
-                StringBuilder stringBuilder = new StringBuilder();
-
-                while ((receiveString = bufferedReader.readLine()) != null) {
-                    stringBuilder.append(receiveString);
-                }
-
-                inputStream.close();
-                ret = stringBuilder.toString();
-            }
-        } catch (FileNotFoundException e) {
-            Log.e("login activity", "File not found: " + e.toString());
+            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(this.openFileOutput("text.txt", Context.MODE_PRIVATE));
+            outputStreamWriter.write("");
+            outputStreamWriter.close();
         } catch (IOException e) {
-            Log.e("login activity", "Can not read file: " + e.toString());
+            Log.e("Exception", "File write failed: " + e.toString());
         }
+    }
 
-        return ret;
+    private String readFromFile() {
+        try {
+            File file = new File(Environment.getExternalStorageDirectory() + "/test.txt");
+            FileReader reader = new FileReader(file);
+            char[] chars = new char[500];
+            reader.read(chars);
+            file.delete();
+            return chars.toString();
+        } catch (IOException e) {
+            Log.e("wtf", "wtf");
+            return null;
+        }
     }
 }

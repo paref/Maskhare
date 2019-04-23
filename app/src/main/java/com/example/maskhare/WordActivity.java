@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Environment;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -19,6 +20,9 @@ import com.example.maskhare.Models.Category;
 
 import org.w3c.dom.Text;
 
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
@@ -54,9 +58,17 @@ public class WordActivity extends AppCompatActivity {
         PlayersCount = intent.getIntExtra("PlayersCount", 0);
         int score = intent.getIntExtra("Score", 0);
         if (io) {
-            writeToFile("," + score, this);
+            writeToFile("," + score);
         }
         RoundCounter = intent.getIntExtra("RoundCounter", 0);
+        if (Count == PlayersCount) {
+            Count = 0;
+            RoundCounter++;
+            writeToFile("\r\n");
+        }
+        if (RoundCounter == Round) {
+            Finish();
+        }
         final TextView LevelTextView = findViewById(R.id.LevelTextView);
         final SeekBar LevelSeekBar = findViewById(R.id.LevelSeekBar);
         LevelSeekBar.setMax(3);
@@ -105,15 +117,8 @@ public class WordActivity extends AppCompatActivity {
                 intent.putExtra("Duration", Duration);
                 intent.putExtra("Level", Level);
                 intent.putExtra("Category_Id", Category_Id);
-                if (Count == PlayersCount) {
-                    Count = 0;
-                    RoundCounter++;
-                    writeToFile("\r\n", WordActivity.this);
-                }
+                intent.putExtra("PlayersCount", PlayersCount);
                 intent.putExtra("Count", Count);
-                if (RoundCounter == Round) {
-                    Finish();
-                }
                 intent.putExtra("RoundCounter", RoundCounter);
                 startActivity(intent);
             }
@@ -124,7 +129,7 @@ public class WordActivity extends AppCompatActivity {
         CategorySpinner.setAdapter(adapter);
         CategorySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-                Category_Id = pos;
+                Category_Id = pos + 1;
             }
 
             public void onNothingSelected(AdapterView<?> parent) {
@@ -140,15 +145,22 @@ public class WordActivity extends AppCompatActivity {
     private void Finish() {
         Intent intent = new Intent(WordActivity.this, ResultActivity.class);
         startActivity(intent);
+        finish();
     }
 
-    private void writeToFile(String data, Context context) {
+    private void writeToFile(String content) {
         try {
-            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(context.openFileOutput("text.txt", Context.MODE_PRIVATE));
-            outputStreamWriter.write(data);
-            outputStreamWriter.close();
+            File file = new File(Environment.getExternalStorageDirectory() + "/test.txt");
+
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+            FileWriter writer = new FileWriter(file);
+            writer.append(content);
+            writer.flush();
+            writer.close();
         } catch (IOException e) {
-            Log.e("Exception", "File write failed: " + e.toString());
+            Log.e("wtf",  e.getMessage());
         }
     }
 }

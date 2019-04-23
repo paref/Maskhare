@@ -28,6 +28,7 @@ public class PlayingActivity extends AppCompatActivity {
     int Score;
     int RoundCounter;
     int Count;
+    int PlayersCount;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -43,6 +44,7 @@ public class PlayingActivity extends AppCompatActivity {
         Category_Id = intent.getIntExtra("Category_Id", 0);
         Count = intent.getIntExtra("Count", 0);
         RoundCounter = intent.getIntExtra("RoundCounter", 0);
+        PlayersCount = intent.getIntExtra("PlayersCount", 0);
         for (Thing thing : things) {
             if (thing.getCategory_Id() == this.Category_Id) {
                 FilteredList.add(thing);
@@ -90,11 +92,16 @@ public class PlayingActivity extends AppCompatActivity {
         intent.putExtra("Score", Score);
         Count++;
         intent.putExtra("Count", Count);
+        intent.putExtra("Round", Round);
+        intent.putExtra("Duration", Duration);
+        intent.putExtra("RoundCounter", RoundCounter);
+        intent.putExtra("PlayersCount", PlayersCount);
         startActivity(intent);
     }
 
     private void Fail() {
         Score = 0;
+        GoBack();
     }
 
     private String ChooseWord() {
