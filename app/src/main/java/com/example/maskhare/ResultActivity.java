@@ -1,6 +1,7 @@
 package com.example.maskhare;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.Nullable;
@@ -16,6 +17,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ResultActivity extends AppCompatActivity {
     @Override
@@ -24,6 +27,20 @@ public class ResultActivity extends AppCompatActivity {
         setContentView(R.layout.activity_result);
         String str = readFromFile();
         String[] strings = str.split("\r\n");
+        int n = 0;
+        String[] ss = strings[0].split(",");
+        n = ss.length;
+        List<Integer> ints = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            ints.add(0);
+        }
+        for (String s : strings) {
+            String[] split = s.split(",");
+            for (int i = 0; i < n; i++) {
+                ints.set(i, ints.get(i) + Integer.valueOf(split[i]));
+            }
+        }
+        //Todo:Show list in listview
     }
 
     private void ClearFile() {
